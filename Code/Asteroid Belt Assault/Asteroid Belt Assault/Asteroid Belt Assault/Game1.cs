@@ -40,7 +40,8 @@ namespace Asteroid_Belt_Assault
         private float titleScreenTimer = 0f;
         private float titleScreenDelayTime = 1f;
 
-        private int playerStartingLives = 3; 
+        private int playerStartingLives = 3;
+        private Vector2 playerStartLocation = new Vector2(400, 500);
         private Vector2 scoreLocation = new Vector2(20, 10);
         private Vector2 livesLocation = new Vector2(20, 25);
 
@@ -75,7 +76,7 @@ namespace Asteroid_Belt_Assault
 
             titleScreen = Content.Load<Texture2D>(@"Textures\TitleScreen");
             spriteSheet = Content.Load<Texture2D>(@"Textures\spriteSheet");
-            weinthisbitch = Content.Load<Texture2D>(@"Textures\asteroid");
+
 
             starField = new StarField(
                 this.Window.ClientBounds.Width,
@@ -87,16 +88,16 @@ namespace Asteroid_Belt_Assault
 
             asteroidManager = new AsteroidManager(
                 10,
-                weinthisbitch,
-                new Rectangle(0, 0, 85, 85),
-                20,
+                spriteSheet,
+                new Rectangle(354, 68, 62, 54),
+                1,
                 this.Window.ClientBounds.Width,
                 this.Window.ClientBounds.Height);
 
             playerManager = new PlayerManager(
                 spriteSheet,    
-                new Rectangle(0, 150, 50, 50),    
-                3,
+                new Rectangle(471, 97, 98, 46),    
+                1,
                 new Rectangle(
                     0,
                     0,
@@ -105,8 +106,8 @@ namespace Asteroid_Belt_Assault
 
             enemyManager = new EnemyManager(
                 spriteSheet,
-                new Rectangle(0, 200, 50, 50),
-                6,
+                new Rectangle(158, 143, 82, 53),
+                1,
                 playerManager,
                 new Rectangle(
                     0,
@@ -116,8 +117,8 @@ namespace Asteroid_Belt_Assault
 
             explosionManager = new ExplosionManager(
                 spriteSheet,
-                new Rectangle(0, 100, 50, 50),
-                3,
+                new Rectangle(158, 143, 82, 53),
+                1,
                 new Rectangle(0, 450, 2, 2));
 
             collisionManager = new CollisionManager(

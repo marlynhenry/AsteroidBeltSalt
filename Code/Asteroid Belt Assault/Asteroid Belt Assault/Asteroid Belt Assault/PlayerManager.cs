@@ -38,9 +38,9 @@ namespace Asteroid_Belt_Assault
 
             PlayerShotManager = new ShotManager(
                 texture,
-                new Rectangle(0, 300, 5, 5),
-                4,
-                2,
+                new Rectangle(484, 238, 37, 23),
+                1,
+                15,
                 250f,
                 screenBounds);
 
@@ -77,6 +77,11 @@ namespace Asteroid_Belt_Assault
 
         private void HandleKeyboardInput(KeyboardState keyState)
         {
+            if (keyState.IsKeyDown(Keys.LeftShift))
+            {
+                playerSprite.Rotation = playerSprite.Rotation + (float)(Math.PI/180)*5;
+
+            }
             if (keyState.IsKeyDown(Keys.Up))
             {
                 playerSprite.Velocity += new Vector2(0, -1);
