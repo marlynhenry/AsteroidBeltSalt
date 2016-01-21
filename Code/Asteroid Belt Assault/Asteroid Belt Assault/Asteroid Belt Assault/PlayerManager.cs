@@ -15,13 +15,13 @@ namespace Asteroid_Belt_Assault
         private Rectangle playerAreaLimit;
 
         public long PlayerScore = 0;
-        public int LivesRemaining = 3;
+        public int LivesRemaining = 5;
         public bool Destroyed = false;
 
         private Vector2 gunOffset = new Vector2(25, 10);
         private float shotTimer = 0.0f;
         private float minShotTimer = 0.2f;
-        private int playerRadius = 15;
+        private int playerRadius = 3;
         public ShotManager PlayerShotManager;
 
         public PlayerManager(
@@ -47,9 +47,9 @@ namespace Asteroid_Belt_Assault
             playerAreaLimit =
                 new Rectangle(
                     0,
-                    screenBounds.Height / 2,
+                    screenBounds.Height/2,
                     screenBounds.Width,
-                    screenBounds.Height / 2);
+                    screenBounds.Height/2);
 
             for (int x = 1; x < frameCount; x++)
             {
@@ -133,8 +133,8 @@ namespace Asteroid_Belt_Assault
                 location.X =
                     (playerAreaLimit.Right - playerSprite.Source.Width);
 
-            if (location.Y < playerAreaLimit.Y)
-                location.Y = playerAreaLimit.Y;
+            if (location.Y < 0)
+                location.Y = 0;
 
             if (location.Y >
                 (playerAreaLimit.Bottom - playerSprite.Source.Height))

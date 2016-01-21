@@ -24,6 +24,8 @@ namespace Asteroid_Belt_Assault
         Texture2D titleScreen;
         Texture2D spriteSheet;
         Texture2D weinthisbitch;
+        Texture2D bbb;
+        Song song;
 
         StarField starField;
         AsteroidManager asteroidManager;
@@ -35,7 +37,7 @@ namespace Asteroid_Belt_Assault
 
         SpriteFont pericles14;
 
-        private float playerDeathDelayTime = 10f;
+        private float playerDeathDelayTime = 2f;
         private float playerDeathTimer = 0f;
         private float titleScreenTimer = 0f;
         private float titleScreenDelayTime = 1f;
@@ -76,15 +78,17 @@ namespace Asteroid_Belt_Assault
 
             titleScreen = Content.Load<Texture2D>(@"Textures\TitleScreen");
             spriteSheet = Content.Load<Texture2D>(@"Textures\spriteSheet");
-
+            bbb = Content.Load<Texture2D>(@"Textures\bbb");
+            song = Content.Load<Song>(@"Sounds\song");
+            MediaPlayer.Play(song);
 
             starField = new StarField(
                 this.Window.ClientBounds.Width,
                 this.Window.ClientBounds.Height,
-                200,
+                100,
                 new Vector2(0, 30f),
                 spriteSheet,
-                new Rectangle(0, 450, 2, 2));
+                new Rectangle(579, 95, 20, 20));
 
             asteroidManager = new AsteroidManager(
                 10,
@@ -269,12 +273,18 @@ namespace Asteroid_Belt_Assault
                     new Rectangle(0, 0, this.Window.ClientBounds.Width,
                         this.Window.ClientBounds.Height),
                         Color.White);
+
             }
 
             if ((gameState == GameStates.Playing) ||
                 (gameState == GameStates.PlayerDead) ||
                 (gameState == GameStates.GameOver))
             {
+                spriteBatch.Draw(bbb,
+                   new Rectangle(0, 0, this.Window.ClientBounds.Width,
+                       this.Window.ClientBounds.Height),
+                       Color.White);
+
                 starField.Draw(spriteBatch);
                 asteroidManager.Draw(spriteBatch);
                 playerManager.Draw(spriteBatch);
