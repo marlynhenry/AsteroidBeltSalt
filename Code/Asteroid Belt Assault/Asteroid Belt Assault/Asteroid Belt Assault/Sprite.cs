@@ -11,6 +11,7 @@ namespace Asteroid_Belt_Assault
     {
         public Texture2D Texture;
 
+
         protected List<Rectangle> frames = new List<Rectangle>();
         private int frameWidth = 0;
         private int frameHeight = 0;

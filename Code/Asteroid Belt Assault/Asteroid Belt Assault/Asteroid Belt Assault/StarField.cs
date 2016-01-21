@@ -45,6 +45,7 @@ namespace Asteroid_Belt_Assault
             foreach (Sprite star in stars)
             {
                 star.Update(gameTime);
+                
                 if (star.Location.Y > screenHeight)
                 {
                     star.Location = new Vector2(
